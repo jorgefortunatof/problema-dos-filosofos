@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    background: #0e0d0df7;
+}
+
+button{
+    margin: 20px;
+    padding: 20px;
+
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.mesa{
+    position: relative;
+    min-height: 400px;
+    min-width: 400px;
+
+    height: 80%;
+    width: 37%;
+
+    background: #863a16;
+    border-radius: 100%;
+}
+
+.prato{
+    height: 100px;
+    width: 100px;
+    background: rgb(204, 204, 204);
+    border-radius: 100px;
+}
+
+#f0{
+    justify-content: center;
+    display: flex;
+}
+
+#f0 .prato{
+    margin-top: 10%;
+}
+
+#f1 .prato{
+    position: absolute;
+    top: 30%;
+    right: 10%;
+}
+
+#f2 .prato{
+    position: absolute;
+    bottom: 15%;
+    right: 20%;
+}
+
+#f3 .prato{
+    position: absolute;
+    bottom: 15%;
+    left: 20%;
+}
+
+#f4 .prato{
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+
+.garfo{
+    width: 6px;
+    height: 60px;
+    background: black;
+}
+
+.garfo::before{
+    content: "";
+    display: block;
+    width: 15px;
+    margin-left: -10px;
+    height: 20px;
+    border-right: 5px black solid;
+    border-bottom: 5px black solid;
+    border-left: 5px black solid;
+}
+
+#g0{
+    transform: rotate(217deg);
+    position: absolute;
+    right: 28%;
+    top: 13%;
+}
+
+#g1{
+    transform: rotate(295deg);
+    position: absolute;
+    right: 15%;
+    top: 55%;
+}
+
+#g2{
+    transform: rotate(360deg);
+    position: absolute;
+    right: 50%;
+    bottom: 10%;
+}
+
+#g3{
+    transform: rotate(65deg);
+    position: absolute;
+    left: 15%;
+    top: 55%;
+}
+
+#g4{
+    transform: rotate(130deg);
+    position: absolute;
+    left: 27%;
+    top: 15%;
+}
