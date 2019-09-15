@@ -22,6 +22,10 @@ function filosofoFactory(pos, elemento){
 
                 this.garfoD.livre = false
                 this.garfoE.livre = false
+				//this.garfoE.mudaCor('#863a16')
+				//this.garfoD.mudaCor('#863a16')
+				this.garfoE.mudaCor('green')
+				this.garfoD.mudaCor('green')
 
                 console.log(`filosofo ${this.pos} esta comendo`)
                 this.prato.style.background = "green"
@@ -31,6 +35,9 @@ function filosofoFactory(pos, elemento){
                     this.prato.style.background = "rgb(204, 204, 204)"
 
                     this.comendo = false
+					
+					this.garfoE.mudaCor('black')
+					this.garfoD.mudaCor('black')
                     this.garfoD.livre = true
                     this.garfoE.livre = true
                 }, 5000)
@@ -39,7 +46,7 @@ function filosofoFactory(pos, elemento){
         },
         sentirFome(){
             let numAleatorio = Math.floor(Math.random()* (10 - 0) + 0)
-            if (numAleatorio > 5){
+            if (numAleatorio > 6){
                 this.comFome = true
 
                 console.log(`filosofo ${this.pos} esta com fome`)
@@ -51,23 +58,34 @@ function filosofoFactory(pos, elemento){
             this.comendo = false
             this.garfoD.livre = true
             this.garfoE.livre = true
+			this.garfoE.mudaCor('black')
+			this.garfoD.mudaCor('black')
             this.prato.style.background = "rgb(204, 204, 204)"
         }
     })
 }
 
-function garfoFactory(valor){
-    return {livre: valor}
+function garfoFactory(valor, g1, g2){
+    return {
+		livre: valor,
+		garfo1: g1,
+		garfo2: g2,
+		mudaCor(cor){
+			g1.style.background = cor
+			g2.style.borderColor = cor
+		}
+	}
 }
 
 
 //GERA OS GARFOS E COLOCA NO ARRAY
-const garfos = Array(5).fill().map( () => garfoFactory(true))
+const garfos = Array(5).fill().map( (v, key) => garfoFactory(true, document.querySelector(`#g${key}`), document.querySelector(`#g${key} .garfo2`)))
+
 
 //GERA FILOSOFOS E CRIA ARRAY
 const filosofos = Array(5).fill().map(
         (v, key) => filosofoFactory(key, document.querySelector(`#f${key} .prato`))
-     )
+)
 
 //LISTA DE FILOSOFOS COM FOME
 let filosofosComFome = Array(5).fill()
@@ -114,7 +132,7 @@ function main (){
             }
         }
         console.log("=====================================")
-    }, 1000)
+    }, 1500)
     
     setTimeout(() => {
         clearInterval(rodando)
